@@ -1,0 +1,34 @@
+.content-heading {
+	background-color: $offwhite-solid;
+	color: $black-text-solid;
+	overflow: hidden;
+	padding-top: $margin-sm;
+	padding-bottom: $margin-sm;
+	position: relative;
+	z-index: 1;
+	.heading {
+		font-weight: $font-weight-light;
+	}
+}
+
+// colour
+	.content-heading {
+		background-color: $brand-color;
+		color: $brand-text;
+	}
+
+.content-inner {
+	margin-top: $margin-lg;
+	margin-bottom: $margin-lg;
+}
+
+.content-sub-heading {
+	font-size: $font-size-h4;
+	font-weight: $font-weight-medium;
+	line-height: $line-height-h4;
+}
+
+// colour
+	.content-sub-heading {
+		color: $brand-color;
+	}

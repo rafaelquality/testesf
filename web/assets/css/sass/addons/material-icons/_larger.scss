@@ -1,0 +1,23 @@
+.#{$mdicon-css-prefix}.x2 {
+	font-size: 2em;
+}
+
+.#{$mdicon-css-prefix}.x3 {
+	font-size: 3em;
+}
+
+.#{$mdicon-css-prefix}.x4 {
+	font-size: 4em;
+}
+
+.#{$mdicon-css-prefix}.x5 {
+	font-size: 5em;
+}
+
+.#{$mdicon-css-prefix}.lg {
+	font-size: 1.4em;
+	vertical-align: -20%;
+	@include responsive("(min--moz-device-pixel-ratio: 0)") {
+		vertical-align: -26%;
+	}
+}

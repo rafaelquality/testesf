@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+{% block favicon %}
+	<link rel="icon" sizes="192x192" href="{{ asset('assets/img/icone.png') }}" >
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/icone.ico') }}" >
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
+	<link href="{{ asset('assets/css/project.css') }}" rel="stylesheet" />
+	
+	{% if app.environment in ['dev', 'test'] %}
+		<style>
+			body::before {
+				content: "xx";
+				position: fixed;
+				bottom: 36px;
+				right: 0px;
+				z-index: 9999999;
+				background-color: #222222;
+				color: #EEEEEE;
+				padding: 8px 8px;
+				width: 36px;
+				text-align: center;
+			}
+			@media (min-width: 480px) {body::before {content: "xs";}}
+			@media (min-width: 768px) {body::before {content: "sm";}}
+			@media (min-width: 992px) {body::before {content: "md";}}
+			@media (min-width: 1440px) {body::before {content: "lg";}}
+		</style>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+{% endblock %}
+
+{% block header %}
+	<header class="header header-transparent header-waterfall">
+		{% include "AdminBundle:Common:header.html.twig" %}
+	</header>
+	
+	<div class="content-heading">
+		<div class="container">
+			<div class="row">
+				<div class="col-xx-12">
+					<h1 class="heading">{% block headerTitle %}{% endblock %}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block main %}
+	
+{% endblock %}
+
+{% block footer %}
+	<footer class="footer">
+		{% include "AdminBundle:Common:footer.html.twig" %}
+	</footer>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="{{ asset("assets/js/base.js") }}"></script>
+	<script src="{{ asset("assets/js/project.js") }}"></script>
+{% endblock %}

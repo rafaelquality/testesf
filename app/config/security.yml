@@ -1,0 +1,64 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    # http://symfony.com/doc/current/cookbook/security/entity_provider.html
+    providers:
+        admin_provider:
+            entity:
+                class: SiteBundle:Usuario
+                property: nome
+        site_provider:
+            entity:
+                class: SiteBundle:Usuario
+                property: email
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        
+        # http://pastebin.com/rZGfLWKK
+        admin_secured_area:
+            pattern: /admin/.*
+            
+            anonymous: ~
+            
+            form_login:
+                login_path: /admin/login/
+                check_path: /admin/login/
+            
+            logout:
+                path: /admin/logout
+                target: /admin/
+            
+            provider: admin_provider
+            
+            context: application
+            
+        site_secured_area:
+            pattern: /.*
+            
+            anonymous: ~
+            
+            form_login:
+                login_path: /login
+                check_path: /login
+            
+            logout:
+                path: /logout
+                target: /
+            
+            provider: site_provider
+            
+            context: application
+        
+    access_control:
+        admin_login:
+            path: /admin/login
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        admin_area:
+            path: /admin/.*
+            roles: ROLE_ADMIN
+        site_area:
+            path: /.*
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
